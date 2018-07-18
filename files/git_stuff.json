@@ -22,12 +22,9 @@
         {
           "team": [], 
           "name": "Admin", 
-          "user": [
-            "admin"
-          ]
+          "user": []
         }
       ], 
-      "labels": [], 
       "schedules": [], 
       "survey_spec": {}
     }, 
