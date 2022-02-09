@@ -1,0 +1,20 @@
+- name: Test an async job
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Start an async sleep command
+      command:
+        cmd: "sleep 1200"
+        timeout: 1500
+      register: win_wait
+      async: 25200
+      poll: 0
+
+    - name: Check on an async task
+      async_status:
+        jid: "{{  win_wait.ansible_job_id }}"
+      register: win_wait_result
+      until: win_wait_result.finished
+      retries: 84
+      delay: 300
