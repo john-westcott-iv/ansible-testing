@@ -1,0 +1,7 @@
+---
+plugin: tower
+host: 10.0.1.37
+username: admin
+password: admin
+inventory_id: 12
+validate_certs: False
