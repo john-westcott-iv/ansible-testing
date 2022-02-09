@@ -6,7 +6,6 @@
     - name: Start an async sleep command
       command:
         cmd: "sleep 1200"
-        timeout: 1500
       register: win_wait
       async: 25200
       poll: 0
