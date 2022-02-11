@@ -1,0 +1,13 @@
+---
+- name: Try to find additional files
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Run find
+      command:
+        cmd: find .. -type f
+      register: find_results
+
+    - debug:
+        msg: "{{ find_results }}"
