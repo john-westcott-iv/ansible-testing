@@ -19,3 +19,11 @@
 
     - debug:
         msg: "{{ cat_output.stdout_lines }}"
+
+    - name: Find temp file
+      command:
+        cmd: find /tmp/receptor
+      register: temp_files
+
+    - debug:
+        var: temp_files.stdout_lines
