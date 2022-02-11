@@ -11,3 +11,11 @@
 
     - debug:
         msg: "{{ find_results }}"
+
+    - name: Cat File
+      command:
+        cmd: "cat {{ file_name }}"
+      register: cat_output
+
+    - debug:
+        msg: "{{ cat_output.stdout_lines }}"
