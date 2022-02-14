@@ -4,26 +4,11 @@
   connection: local
   gather_facts: False
   tasks:
-    - name: Run find
-      command:
-        cmd: find .. -type f
-      register: find_results
-
-    - debug:
-        msg: "{{ find_results }}"
-
     - name: Cat File
       command:
-        cmd: "cat {{ file_name }}"
+        cmd: "cat {{ item }}"
       register: cat_output
+      loop: "{{ file_names }}"
 
     - debug:
-        msg: "{{ cat_output.stdout_lines }}"
-
-    - name: Find temp file
-      command:
-        cmd: find /tmp/receptor
-      register: temp_files
-
-    - debug:
-        var: temp_files.stdout_lines
+        msg: "{{ cat_output }}"
