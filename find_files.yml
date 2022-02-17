@@ -10,7 +10,7 @@
       register: found_files
 
     - debug:
-        msg: "{{ location.stdout_lines }}"
+        msg: "{{ found_files.stdout_lines }}"
 
     - name: Cat Files
       command:
