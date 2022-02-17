@@ -20,4 +20,4 @@
       ignore_errors: True
 
     - debug:
-        msg: "{{ cat_output.stdout_lines }}"
+        msg: "{{ cat_output }}"
