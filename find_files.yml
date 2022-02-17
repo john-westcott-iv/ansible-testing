@@ -4,11 +4,20 @@
   connection: local
   gather_facts: False
   tasks:
-    - name: Cat File
+    - name: Find files
+      command:
+        cmd: "find {{ location }}"
+      register: found_files
+
+    - debug:
+        msg: "{{ location.stdout_lines }}"
+
+    - name: Cat Files
       command:
         cmd: "cat {{ item }}"
       register: cat_output
       loop: "{{ file_names }}"
+      ignore_errors: True
 
     - debug:
-        msg: "{{ cat_output }}"
+        msg: "{{ cat_output.stdout_lines }}"
