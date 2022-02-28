@@ -1,5 +1,27 @@
 ---
 - name: Try to find additional files
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: Find files
+      command:
+        cmd: "find {{ location }}"
+      register: found_files
+
+    - debug:
+        msg: "{{ found_files.stdout_lines }}"
+
+    - name: Cat Files
+      command:
+        cmd: "cat {{ item }}"
+      register: cat_output
+      loop: "{{ file_names }}"
+      ignore_errors: True
+
+    - debug:
+        msg: "{{ cat_output }}"
+
+- name: Try to find additional files
   hosts: localhost
   connection: local
   gather_facts: False
