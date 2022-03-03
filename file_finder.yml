@@ -12,13 +12,26 @@
         paths: ..
       register: files
 
-    - name: Extract file content
+    - name: Extract file names
       set_fact:
-        file_content: "{{ file_content | default({}) | combine({ item.path: lookup('file', item.path) }) }}"
+        file_names: "{{ file_names | default([]) + [ item.path ] }}"
       loop: "{{ files.files }}"
       loop_control:
         label: "{{ item.path }}"
-      when: "'/.git/' not in item.path"
+      when:
+        - "'/.git/' not in item.path"
+        - "'/project/' not in item.path"
+      register: all_file_names
+
+    - name: Get names of modified/new files in project
+      shell:
+        cmd: "git status --short | cut -c4-"
+      register: modified_project_files
+
+    - name: Extract file content
+      set_fact:
+        file_content: "{{ file_content | default({}) | combine({ item.path: lookup('file', item) }) }}"
+      loop: "{{ all_file_names + modified_project_files.stdout_lines | default([]) }}"
 
     - name: Set job stats
       set_stats:
