@@ -1,0 +1,20 @@
+---
+- name: Dump webhook variables
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - debug:
+        msg: "{{ item }}"
+      loop:
+        - 
+        - controller_webhook_event_type
+        - controller_webhook_event_guid
+        - controller_webhook_event_ref
+        - controller_webhook_status_api
+        - controller_webhook_payload
+        - tower_webhook_event_type
+        - tower_webhook_event_guid
+        - tower_webhook_event_ref
+        - tower_webhook_status_api
+        - tower_webhook_payload
