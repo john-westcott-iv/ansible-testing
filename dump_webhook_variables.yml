@@ -7,14 +7,13 @@
     - debug:
         msg: "{{ item }}"
       loop:
-        - 
-        - controller_webhook_event_type
-        - controller_webhook_event_guid
-        - controller_webhook_event_ref
-        - controller_webhook_status_api
-        - controller_webhook_payload
-        - tower_webhook_event_type
-        - tower_webhook_event_guid
-        - tower_webhook_event_ref
-        - tower_webhook_status_api
-        - tower_webhook_payload
+        - "{{ controller_webhook_event_type | default('Undefined') }}"
+        - "{{ controller_webhook_event_guid | default('Undefined') }}"
+        - "{{ controller_webhook_event_ref | default('Undefined') }}"
+        - "{{ controller_webhook_status_api | default('Undefined') }}"
+        - "{{ controller_webhook_payload | default('Undefined') }}"
+        - "{{ tower_webhook_event_type | default('Undefined') }}"
+        - "{{ tower_webhook_event_guid | default('Undefined') }}"
+        - "{{ tower_webhook_event_ref | default('Undefined') }}"
+        - "{{ tower_webhook_status_api | default('Undefined') }}"
+        - "{{ tower_webhook_payload | default('Undefined') }}"
