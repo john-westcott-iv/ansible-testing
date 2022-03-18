@@ -4,16 +4,42 @@
   connection: local
   gather_facts: False
   tasks:
-    - debug:
-        msg: "{{ item }}"
-      loop:
-        - "{{ controller_webhook_event_type | default('Undefined') }}"
-        - "{{ controller_webhook_event_guid | default('Undefined') }}"
-        - "{{ controller_webhook_event_ref | default('Undefined') }}"
-        - "{{ controller_webhook_status_api | default('Undefined') }}"
-        - "{{ controller_webhook_payload | default('Undefined') }}"
-        - "{{ tower_webhook_event_type | default('Undefined') }}"
-        - "{{ tower_webhook_event_guid | default('Undefined') }}"
-        - "{{ tower_webhook_event_ref | default('Undefined') }}"
-        - "{{ tower_webhook_status_api | default('Undefined') }}"
-        - "{{ tower_webhook_payload | default('Undefined') }}"
+    - name: Print conteoller_webjook_event_type
+      debug:
+        msg: "{{ controller_webhook_event_type | default('Undefined') }}"
+
+    - name: Print controller_webhook_event_guid
+      debug:
+        msg: "{{ controller_webhook_event_guid | default('Undefined') }}"
+
+    - name: Print controller_webhook_event_ref
+      debug:
+        msg: "{{ controller_webhook_event_ref | default('Undefined') }}"
+
+    - name: Print controller_webhook_status_api
+      debug:
+        msg: "{{ controller_webhook_status_api | default('Undefined') }}"
+
+    - name: Print controller_webhook_payload
+      debug:
+        msg: "{{ controller_webhook_payload | default('Undefined') }}"
+
+    - name: Print tower_webhook_event_type
+      debug:
+        msg: "{{ tower_webhook_event_type | default('Undefined') }}"
+
+    - name: Print tower_webhook_event_guid
+      debug:
+        msg: "{{ tower_webhook_event_guid | default('Undefined') }}"
+
+    - name: Print tower_webhook_event_ref
+      debug:
+        msg: "{{ tower_webhook_event_ref | default('Undefined') }}"
+
+    - name: Print tower_webhook_status_api
+      debug:
+        msg: "{{ tower_webhook_status_api | default('Undefined') }}"
+
+    - name: Print tower_webhook_payload
+      debug:
+        msg: "{{ tower_webhook_payload | default('Undefined') }}"
