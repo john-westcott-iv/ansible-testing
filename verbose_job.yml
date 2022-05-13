@@ -1,7 +1,6 @@
 ---
 - name: Run a job with a bunch of gibberish
-  hosts: localhost
-  connection: local
+  hosts: all
   gather_facts: False
   tasks:
     - debug:
