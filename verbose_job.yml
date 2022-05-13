@@ -6,5 +6,5 @@
     - debug:
         msg: "This is a message log"
       loop: "{{ query('sequence', 'start=1 end=128') }}"
-      loop_control:
-        pause: 1
+      #loop_control:
+        #pause: 1
