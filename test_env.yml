@@ -1,0 +1,15 @@
+---
+- name: Dump env
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Run env command
+      shell:
+        cmd: env | sort
+      register: my_env
+      changed_when: False
+
+    - name: Print Env
+      debug:
+        msg: "{{ my_env }}"
