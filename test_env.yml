@@ -3,6 +3,9 @@
   hosts: localhost
   connection: local
   gather_facts: False
+  vars:
+    env_var_name_for_lookup: False
+    file_contents: "You didn't tell me to read anything"
   tasks:
     - name: Run env command
       shell:
@@ -13,3 +16,13 @@
     - name: Print Env
       debug:
         msg: "{{ my_env }}"
+
+    - name: Glob file
+      set_fact:
+        file_contents: "{{ lookup('file', file_name) }}"
+      vars:
+        file_name: "{{ lookup('env', env_var_name_for_lookup) }}"
+      when: env_var_name_for_lookup
+
+    - debug:
+        var: file_contents
