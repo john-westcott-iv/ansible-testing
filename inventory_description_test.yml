@@ -1,0 +1,7 @@
+all:
+  children:
+    main:
+      hosts:
+        localhost:
+          _awx_description: This is some random node
+    ungrouped: {}
