@@ -1,0 +1,6 @@
+---
+- name: Run against a host with paramiko
+  hosts: all
+  connection: paramiko
+  tasks:
+    - command: "echo hello"
