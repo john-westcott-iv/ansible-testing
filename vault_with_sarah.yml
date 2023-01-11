@@ -2,6 +2,8 @@
 - name: This is my playbook
   hosts: localhost
   gather_facts: False
+  vars_files:
+    - my_varsfile.yml
   tasks:
     - debug:
         msg: "This is my password {{ password }}"
